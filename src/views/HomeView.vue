@@ -1,11 +1,13 @@
 <template>
   <div class="home"></div>
+  <petsMi :pets="pets"/> 
 </template>
 
 <script>
-
+import petsMi from "../components/petsMi.vue";
 export default {
   name: 'HomeView',
+  components: { petsMi, },
   data() {
     return {
       pets: [
