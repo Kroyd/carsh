@@ -1,6 +1,7 @@
 <template>
-    <div class="pets">
+    <div class="p-grid">
         <div v-for="pet in pets" :key="pet.id">
+             <!-- <h3>{{ pet.name }}</h3> -->
             <pet-mi :pet="pet"></pet-mi>
         </div>
     </div>
