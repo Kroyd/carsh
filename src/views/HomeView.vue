@@ -1,13 +1,24 @@
 <template>
-  <div class="home"></div>
-  <petsMi :pets="pets"/> 
+  <!-- <div class="home"></div> -->
+  <add-pet></add-pet> 
+  <petsMi  @remove-pet="removePet" :pets="pets"/>
 </template>
 
 <script>
-import petsMi from "../components/petsMi.vue";
+import petsMi from "../components/petsMi";
+import AddPet from "../components/AddPet";
+
 export default {
   name: 'HomeView',
-  components: { petsMi, },
+  components: { petsMi, AddPet, },
+  methods: {
+    removePet(id) {
+      // console.log('Home', id);
+      if (confirm("I work")) {
+        this.pets = this.pets.filter((pet) => pet.id !== id)
+      }
+    }
+  },
   data() {
     return {
       pets: [
@@ -20,9 +31,9 @@ export default {
           isFavorite: true,
         },
         {
-          id: 1,
+          id: 2,
           name: "JS",
-          age: 2,
+          age: 3,
           img:
             "https://img.freepik.com/free-photo/woman-portrait-indoors_624325-3423.jpg?w=740&t=st=1688212966~exp=1688213566~hmac=f4ed84f33288cb455cb5e3b92d509d8276fc026ed81a844adcc1703984af55e1",
           isFavorite: false,

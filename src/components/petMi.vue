@@ -1,11 +1,10 @@
 <template>
   <div class="pet">
     <!-- <h3>{{ pet.name }}</h3> -->
-        <MyCard style="width: 25em;">
+        <my-card>
           <template #header>
             <img 
-            src="https://img.freepik.com/free-photo/beautiful-redhead-woman-with-curly-hair-smiling-looking-at-camera-sitting-at-table-over-white-wall_176420-17042.jpg?w=740&t=st=1688212883~exp=1688213483~hmac=81764a2a93a341cddf727d9cbc081c9cf20b334a05be0ebe7fe43761caef7a7e" 
-            style="height: 15rem;"
+            :src="pet.url"
             />
           </template>
           <template #title>
@@ -18,24 +17,21 @@
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique aliquam fugit sit sapiente 
             odio, at excepturi quam voluptatibus totam, dolore magni ullam consequatur reiciendis qui accusamus eligendi natus nobis quod!</p>
           </template> -->
-          <template #footer>
+          <template  #footer>
             <MyButton 
+            @click="onRemove(pet.id)"
             icon="pi pi-times" 
             label="Remove" 
             class="p-button-danger"
             style="margin-right: 4em;"
             ></MyButton>
+
             <MyButton 
-            icon="pi pi-heart" 
-            class="p-button-rounded p-button-danger">
-            </MyButton>
-            <MyButton
-              icon="pi pi-heart"
-              class="p-button-rounded p-button-danger p-button-outlined"  
-            >
+            icon="pi pi-heart"
+            :class="[pet.isFavorite ? '' : 'p-button-outlined', 'p-button-rounded', 'p-button-danger']">
             </MyButton>
           </template>
-        </MyCard>
+        </my-card>
   </div>
 </template>
 
@@ -44,6 +40,12 @@ export default {
     props: {
         pet: Object,
     },
+    methods: {
+      onRemove(id) {
+        // console.log("Cliced",id);
+        this.$emit("remove-pet", id)
+      }
+    }
 }
 </script>
 
