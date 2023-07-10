@@ -1,6 +1,8 @@
 <template>
   <!-- <div class="home"></div> -->
-  <add-pet></add-pet> 
+  <add-pet
+  @add-pet="addPet"
+  ></add-pet> 
   <petsMi  
   @remove-pet="removePet" 
   :pets="pets"
@@ -16,6 +18,9 @@ export default {
   name: 'HomeView',
   components: { petsMi, AddPet, },
   methods: {
+    addPet(pet) {
+      this.pets  = [...this.pets, pet]
+    },
     removePet(id) {
       // console.log('Home', id);
       if(confirm('Вы дествительно хотите удалить картинки?')) {
