@@ -1,10 +1,10 @@
 <template>
   <div class="pet">
     <!-- <h3>{{ pet.name }}</h3> -->
-        <my-card>
-          <template #header>
-            <img 
-            :src="pet.url"
+        <my-card  >
+          <template  #header>
+            <img
+            src="https://images.unsplash.com/photo-1540804485132-9c94bcae6c66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
             />
           </template>
           <template #title>
@@ -27,6 +27,7 @@
             ></MyButton>
 
             <MyButton 
+            @click="$emit('add-favorite', pet.id)"
             icon="pi pi-heart"
             :class="[pet.isFavorite ? '' : 'p-button-outlined', 'p-button-rounded', 'p-button-danger']">
             </MyButton>
@@ -50,5 +51,9 @@ export default {
 </script>
 
 <style>
-
+img {
+  height: 250px;
+  object-fit: cover;
+  justify-content: space-around;
+}
 </style>

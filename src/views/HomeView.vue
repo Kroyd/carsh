@@ -1,7 +1,11 @@
 <template>
   <!-- <div class="home"></div> -->
   <add-pet></add-pet> 
-  <petsMi  @remove-pet="removePet" :pets="pets"/>
+  <petsMi  
+  @remove-pet="removePet" 
+  :pets="pets"
+  @add-favorite="addFavorite"
+  />
 </template>
 
 <script>
@@ -14,15 +18,26 @@ export default {
   methods: {
     removePet(id) {
       // console.log('Home', id);
-      if (confirm("I work")) {
+      if(confirm('Вы дествительно хотите удалить картинки?')) {
         this.pets = this.pets.filter((pet) => pet.id !== id)
+      }else {
+        alert('Вы хорошый человека?')
       }
-    }
+    },
+    addFavorite(id) {
+      this.pets = this.pets.map((pet) => 
+      pet.id === id ? {...pet, isFavorite: !pet.isFavorite} : pet 
+      );
+    },
   },
   data() {
     return {
-      pets: [
-        {
+      pets: [],
+    }
+  },  
+  created() {
+    this.pets = [
+    {
           id: 1,
           name: "Rudy",
           age: 2,
@@ -38,8 +53,7 @@ export default {
             "https://img.freepik.com/free-photo/woman-portrait-indoors_624325-3423.jpg?w=740&t=st=1688212966~exp=1688213566~hmac=f4ed84f33288cb455cb5e3b92d509d8276fc026ed81a844adcc1703984af55e1",
           isFavorite: false,
         },
-      ]
-    }
+    ]
   }
 }
 </script>
