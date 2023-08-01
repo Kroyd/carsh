@@ -13,7 +13,7 @@
         <label for="url" class="p-sr-only">URL</label>
         <InputText v-model="url" id="url" type="" placeholder="Image URL"></InputText>
     </div>
-    <MyButton type="submit" label="Сохранить"></MyButton>
+    <Button type="submit" label="Сохранить"></Button>
   </form>
 </div>
 </template>
