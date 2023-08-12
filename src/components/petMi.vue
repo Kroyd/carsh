@@ -4,7 +4,7 @@
         <my-card  >
           <template  #header>
             <img
-            src="https://images.unsplash.com/photo-1540804485132-9c94bcae6c66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+            src=""
             />
           </template>
           <template #title>
@@ -18,19 +18,19 @@
             odio, at excepturi quam voluptatibus totam, dolore magni ullam consequatur reiciendis qui accusamus eligendi natus nobis quod!</p>
           </template> -->
           <template  #footer>
-            <MyButton 
+            <Button 
             @click="onRemove(pet.id)"
             icon="pi pi-times" 
             label="Remove" 
             class="p-button-danger"
             style="margin-right: 4em;"
-            ></MyButton>
+            ></Button>
 
-            <MyButton 
+            <Button 
             @click="$emit('add-favorite', pet.id)"
             icon="pi pi-heart"
             :class="[pet.isFavorite ? '' : 'p-button-outlined', 'p-button-rounded', 'p-button-danger']">
-            </MyButton>
+            </Button>
           </template>
         </my-card>
   </div>
