@@ -1,10 +1,10 @@
 <template>
   <div class="pet">
     <!-- <h3>{{ pet.name }}</h3> -->
-        <my-card  >
+        <card>
           <template  #header>
-            <img
-            src=""
+            <img class="w-[300px] h-[250px] object-cover" 
+            :src="pet.url" alt="Pet"
             />
           </template>
           <template #title>
@@ -19,20 +19,19 @@
           </template> -->
           <template  #footer>
             <Button 
-            @click="onRemove(pet.id)"
+            @click="onRemove(pet.id, pet.name)"
             icon="pi pi-times" 
             label="Remove" 
             class="p-button-danger"
             style="margin-right: 4em;"
             ></Button>
-
             <Button 
             @click="$emit('add-favorite', pet.id)"
             icon="pi pi-heart"
             :class="[pet.isFavorite ? '' : 'p-button-outlined', 'p-button-rounded', 'p-button-danger']">
             </Button>
           </template>
-        </my-card>
+        </card>
   </div>
 </template>
 
@@ -42,18 +41,10 @@ export default {
         pet: Object,
     },
     methods: {
-      onRemove(id) {
-        // console.log("Cliced",id);
-        this.$emit("remove-pet", id)
+      onRemove(id, name) {
+        // console.log("Cliced",id, name);
+        this.$emit("remove-pet", id, name)
       }
     }
 }
 </script>
-
-<style>
-img {
-  height: 250px;
-  object-fit: cover;
-  justify-content: space-around;
-}
-</style>

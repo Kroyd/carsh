@@ -1,9 +1,10 @@
 <template>
-    <div class="grid">
-        <div class="p-col-12 p-md-6 p-lg-3" v-for="pet in pets" :key="pet.id">
+    <div class="flex justify-content items-center grid">
+        <div class="p-col-12 p-lg-6 p-lg-3" v-for="pet in pets" :key="pet.id">
              <!-- <h3>{{ pet.name }}</h3> -->
             <pet-mi 
-            @remove-pet="$emit('remove-pet', pet.id)" 
+            class="mt-[50px] mx-[25px] "
+            @remove-pet="$emit('remove-pet', pet.id ,pet.name)" 
             @add-favorite="$emit('add-favorite', pet.id)" 
             :pet="pet"
             ></pet-mi>
