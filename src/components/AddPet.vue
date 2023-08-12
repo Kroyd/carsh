@@ -1,21 +1,23 @@
 <template>
-<div class="search" style="margin-top: 20px">
-  <form @submit="onSubmit" class="p-formgroup-inline"> 
-    <div class="p-inputgroup flex-1">
+<div class="mt-[20px]" >
+  <form @submit="onSubmit" class="flex justify-start mx-[20px]"> 
+    <div class="">
         <label for="Name" class="p-sr-only" >Name</label>
         <InputText v-model="name" id="name" type="text" placeholder="name"></InputText>
     </div>
-    <div class="p-inputgroup flex-1">
+    <div class="ml-[20px]">
         <label for="age" class="p-sr-only">Age</label>
         <InputText v-model="age" id="age" type="number" placeholder="age"></InputText>
     </div>
-    <div class="p-inputgroup flex-1">
+    <div class="ml-[20px]">
         <label for="url" class="p-sr-only">URL</label>
-        <InputText v-model="url" id="url" type="" placeholder="Image URL"></InputText>
+        <InputText v-model="url" id="url" type="text" placeholder="Image URL"></InputText>
     </div>
-    <Button type="submit" label="Сохранить"></Button>
+    <div class="ml-[20px]">
+      <Button  type="submit" label="Сохранить"></Button>
+    </div>
   </form>
-</div>
+</div> 
 </template>
 
 <script>
@@ -26,7 +28,7 @@ export default {
         name: "",
         age: "",
         url: "",
-        isFavorite: true,
+        isFavorite: false,
       }
     },
     methods: {
@@ -34,7 +36,7 @@ export default {
         e.preventDefault();
         
         const newPet = {
-          id: Math.random(),
+          // id: Math.random(),
           name: this.name,
           age: this.age,
           url: this.url,
@@ -52,7 +54,4 @@ export default {
 </script>
 
 <style scoped>
- .search {
-  
- }
 </style>
