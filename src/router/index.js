@@ -1,36 +1,41 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
+import AboutView from '../views/AboutView.vue'
+import loginCarsh from '@/auth/loginCarsh.vue'
+import notFound from '@/error/notFound.vue'
+import howRew from '@/views/howRew.vue'
 
 const routes = [
   {
     path: '/',
     name: 'login',
-    component: () => import('@/auth/loginCarsh.vue'),
-    redirect: '/',
-    // meta: {requiresAuth: true},
-    children: [
-      {
-        path: '/home',
-        name: 'home',
-        component: () => import('@/views/HomeView.vue'),
-      },
-      {
-        path: '/about',
-        name: 'about',
-        component: () => import('@/views/AboutView.vue')
-      },
-    ]
+    component: loginCarsh
+  },
+  {
+    path: '/howRew',
+    name: 'howRew',
+    component: howRew
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: HomeView
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: AboutView  
   },
   {
     path: '/not-found',
     name: 'not-found',
-    component: () => import('@/error/notFound.vue'),
+    component: notFound
   },
-  {
+  { 
     path: '/:catchAll(.*)',
-    redirect: '/not-found'
+    redirect: '/not-found' 
   }
 ]
-
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -38,46 +43,3 @@ const router = createRouter({
 })
 
 export default router
-
-// import Login from '../auth/loginCarsh.vue'
-// import Router from 'vue-router'
-// import Vue from 'vue'
-// import { isLoggedIn } from '@/auth';
-
-
-// Vue.use(Router)
-
-// const router = new Router({ 
-//   mode: 'history',
-//   routes:  [
-//   {
-//     path: "/login",
-//     name: "login",
-//     component: Login
-//   },
-//   {
-//     path: '/home',
-//     name: 'home',
-//     component: () => import('@/views/HomeView.vue'),
-//     meta: {requiresAuth: true}
-//   },
-//   {
-//     path: '/about',
-//     name: 'about',
-//     component: () => import('@/views/AboutView.vue')  
-//   },
-//  ]
-// })
-
-
-// router.beforeEach((to, from, next) => {
-//   if (to.meta.requiresAuth && !isLoggedIn()) {
-//     if(to.path !== '/login') {
-//       next({path: '/login'})
-//     }
-//   }else {
-//     next()
-//   }
-// })
-
-// export default router

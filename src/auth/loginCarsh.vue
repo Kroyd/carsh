@@ -1,18 +1,9 @@
 <template>
   <div>
     <h1>Login</h1>
-    <h1>Login</h1>
-    <h1>Login</h1>
-    <h1>Login</h1>
-    <h1>Login</h1>
-    <h1>Login</h1>
-    <h1>Login</h1>
-    <h1>Login</h1>
-    <h1>Login</h1>
-    <h1>Login</h1>
-    <h1>Login</h1>
-    <h1>Login</h1>
-    <h1>Login</h1>
+    <button>
+      <router-link to="/howRew">привет</router-link>
+    </button>
   </div>
 </template>
 
